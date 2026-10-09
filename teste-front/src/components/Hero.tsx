@@ -1,5 +1,4 @@
 import './Hero.css';
-import '../img/Hero.png';
 
 export function Hero() {
   return (

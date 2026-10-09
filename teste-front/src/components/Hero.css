@@ -2,7 +2,7 @@
   min-height: 400px;
   background-size: cover;
   background-position: center;
-  background-image: url('../img/Hero.png');
+  background-image: url('../assets/img/Hero.png');
   display: flex;
   align-items: center;
   color: #fff;
