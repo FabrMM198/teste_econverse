@@ -1,0 +1,36 @@
+.hero {
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../img/Hero.png');
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.hero-content {
+  padding: 0 80px;
+}
+
+.hero-content h1 {
+  font-size: 40px;
+  max-width: 400px;
+}
+
+.hero-content p {
+  margin: 12px 0 20px;
+  font-size: 20px;
+}
+
+.hero-content p span {
+  font-weight: bold;
+  color: #fcc500;
+}
+
+.hero-content button {
+  background: #fcc500;
+  border: none;
+  padding: 12px 28px;
+  font-weight: bold;
+  cursor: pointer;
+}

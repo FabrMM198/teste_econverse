@@ -1,9 +1,14 @@
+import './Hero.css';
+import '../img/Hero.png';
+
 export function Hero() {
   return (
     <section className="hero">
-      <h1>Venha conhecer nossas promoções</h1>
-      <p>50% Off nos produtos</p>
-      <button>Conheça</button>
+        <div className="hero-content">
+            <h1>Venha conhecer nossas promoções</h1>
+            <p><span>50% Off</span> nos produtos</p>
+            <button>Ver produto</button>
+        </div>
     </section>
   );
 }
