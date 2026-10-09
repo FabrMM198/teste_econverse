@@ -1,127 +1,133 @@
+@use '../styles/variables' as *;
+
 .header {
-  background: #fff;
-}
+  background: $branco;
 
-/* Barra de benefícios */
-.header-benefits {
-  display: flex;
-  justify-content: center;
-  gap: 72px;
-  padding: 8px 16px;
-  font-size: 11px;
-  color: #555;
-}
+  /* Barra de benefícios */
+  &-benefits {
+    display: flex;
+    justify-content: center;
+    gap: 72px;
+    padding: 8px 16px;
+    font-size: 11px;
+    color: $cinza-texto;
+  }
 
-.benefit {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+  .benefit {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 
-.benefit img {
-  width: 14px;
-  height: 14px;
-}
+    .benefit img {
+      width: 14px;
+      height: 14px;
+    }
 
-.benefit strong {
-  color: #2d2f9e;
-  font-weight: 600;
-}
+    .benefit strong {
+      color: $azul;
+      font-weight: 600;
+    }
+  }
 
-/* Logo, busca e ícones */
-.header-main {
-  display: flex;
-  align-items: center;
-  gap: 48px;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 16px 24px;
-}
+  /* Logo, busca e ícones */
+  &-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    max-width: $largura-max;
+    margin: 0 auto;
+    padding: 16px 24px;
+  }
 
-.header-logo {
-  height: 34px;
-}
+  &-logo {
+    height: 34px;
+  }
 
-.header-search {
-  flex: 1;
-  position: relative;
-}
+  &-search {
+    flex: 0 1 50%;
+    position: relative;
 
-.header-search input {
-  width: 100%;
-  height: 40px;
-  padding: 0 48px 0 20px;
-  border: none;
-  border-radius: 24px;
-  background: #f3f1ea;
-  font-family: inherit;
-  font-size: 12px;
-}
+    input {
+      width: 100%;
+      height: 40px;
+      padding: 0 48px 0 20px;
+      border: none;
+      border-radius: 24px;
+      background: $fundo-busca;
+      font-family: inherit;
+      font-size: 12px;
+    }
 
-.header-search button {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+    button {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
 
-.header-search button img {
-  width: 18px;
-  display: block;
-}
+    button img {
+      width: 22px;
+      display: block;
+    }
+  }
 
-.header-icons {
-  display: flex;
-  gap: 24px;
-}
+  &-icons {
+    display: flex;
+    gap: 24px;
 
-.header-icons img {
-  width: 22px;
-  cursor: pointer;
-}
+    img {
+      width: 22px;
+      cursor: pointer;
+    }
+  }
 
-/* Menu */
-.header-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 10px 24px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
+  /* Menu */
+  &-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: $largura-max;
+    margin: 0 auto;
+    padding: 10px 24px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 
-.header-menu ul {
-  display: flex;
-  gap: 48px;
-  list-style: none;
-}
+    ul {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      margin-right: 48px;
+      list-style: none;
+    }
 
-.header-menu li {
-  font-size: 10px;
-  text-transform: uppercase;
-  color: #555;
-  cursor: pointer;
-}
+    li {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: $cinza-menu;
+      cursor: pointer;
 
-.header-menu li.destaque {
-  color: #2d2f9e;
-  font-weight: 600;
-}
+      &.destaque {
+        color: $azul;
+        font-weight: 600;
+      }
+    }
+  }
 
-.header-subscription {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 10px;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #555;
-}
+  &-subscription {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $cinza-menu;
 
-.header-subscription img {
-  width: 16px;
+    img {
+      width: 16px;
+    }
+  }
 }

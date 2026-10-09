@@ -1,36 +1,42 @@
+@use '../styles/variables' as *;
+
 .hero {
+  display: flex;
+  align-items: center;
+  color: $branco;
   min-height: 400px;
   background-size: cover;
   background-position: center;
   background-image: url('../assets/img/Hero.png');
-  display: flex;
-  align-items: center;
-  color: #fff;
-}
 
-.hero-content {
-  padding: 0 80px;
-}
+  &-content {
+    width: 100%;
+    max-width: $largura-max;
+    margin: 0 auto;
+    padding: 0 24px;
 
-.hero-content h1 {
-  font-size: 40px;
-  max-width: 400px;
-}
+    h1 {
+      font-size: 40px;
+      font-weight: 500;
+      max-width: 400px;
+    }
 
-.hero-content p {
-  margin: 12px 0 20px;
-  font-size: 20px;
-}
+    p {
+      margin: 12px 0 20px;
+      font-size: 20px;
+    }
 
-.hero-content p span {
-  font-weight: bold;
-  color: #fcc500;
-}
+    span {
+      font-weight: 700;
+      color: $amarelo;
+    }
+  }
 
-.hero-content button {
-  background: #fcc500;
-  border: none;
-  padding: 12px 28px;
-  font-weight: bold;
-  cursor: pointer;
+  .hero-content button {
+    background: #fcc500;
+    border: none;
+    padding: 12px 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
 }
