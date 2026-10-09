@@ -32,16 +32,16 @@
       font-weight: 700;
       color: $amarelo;
     }
-  }
 
-  .hero-content button {
-    background: $amarelo;
-    color: $violeta;
-    border: none;
-    padding: 12px 28px;
-    font-size: 16px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
+    button {
+      background: $amarelo;
+      color: $violeta;
+      border: none;
+      padding: 12px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+    }
   }
 }
