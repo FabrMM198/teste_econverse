@@ -1,16 +1,30 @@
 @use '../styles/variables' as *;
 
 .header {
+  width: 100%;
   background: $branco;
 
   /* Barra de benefícios */
   &-benefits {
+    position: relative;
     display: flex;
     justify-content: center;
     gap: 72px;
     padding: 8px 16px;
-    font-size: 11px;
-    color: $cinza-texto;
+    font-size: 12px;
+    font-weight: 500;
+    color: $cinza-claro;
+
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: min(#{$largura-max}, calc(100% - 48px));
+      margin-inline: auto;
+      border-bottom: 1px solid $borda-header;
+      content: '';
+    }
   }
 
   .benefit {
@@ -24,7 +38,7 @@
     }
 
     .benefit strong {
-      color: $azul;
+      color: $azul-destaque;
       font-weight: 600;
     }
   }
@@ -37,7 +51,8 @@
     gap: 48px;
     max-width: $largura-max;
     margin: 0 auto;
-    padding: 16px 24px;
+    height: 72px;
+    padding-inline: 24px;
   }
 
   &-logo {
@@ -56,7 +71,8 @@
       border-radius: 24px;
       background: $fundo-busca;
       font-family: inherit;
-      font-size: 12px;
+      font-size: 14px;
+      font-weight: 500;
     }
 
     button {
@@ -88,30 +104,30 @@
   /* Menu */
   &-menu {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 91px;
     max-width: $largura-max;
     margin: 0 auto;
-    padding: 10px 24px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    padding: 0 69px;
+    height: 40px;
+    box-shadow: 0 2px 6px $sombra-menu;
 
     ul {
       display: flex;
-      flex: 1;
-      justify-content: space-between;
-      margin-right: 48px;
+      gap: 91px;
       list-style: none;
     }
 
     li {
-      font-size: 10px;
-      font-weight: 500;
+      font-size: 12px;
+      font-weight: 600;
       text-transform: uppercase;
-      color: $cinza-menu;
+      color: $cinza-claro;
       cursor: pointer;
 
       &.destaque {
-        color: $azul;
+        color: $azul-destaque;
         font-weight: 600;
       }
     }
@@ -120,14 +136,15 @@
   &-subscription {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 10px;
+    gap: 12px;
+    font-size: 12px;
+    font-weight: 600;
     text-transform: uppercase;
     text-decoration: none;
-    color: $cinza-menu;
+    color: $cinza-claro;
 
     img {
-      width: 16px;
+      width: 20px;
     }
   }
 }

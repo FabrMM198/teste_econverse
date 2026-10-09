@@ -16,14 +16,16 @@
     padding: 0 24px;
 
     h1 {
-      font-size: 40px;
-      font-weight: 500;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 50px;
       max-width: 400px;
     }
 
     p {
       margin: 12px 0 20px;
-      font-size: 20px;
+      font-size: 32px;
+      font-weight: 400;
     }
 
     span {
@@ -33,10 +35,13 @@
   }
 
   .hero-content button {
-    background: #fcc500;
+    background: $amarelo;
+    color: $violeta;
     border: none;
     padding: 12px 28px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
     cursor: pointer;
   }
 }
