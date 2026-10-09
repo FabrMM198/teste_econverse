@@ -1,4 +1,4 @@
-import './Header.css';
+import './Header.scss';
 
 import logo from '../assets/img/Logo_Econverse.png';
 import search from '../assets/icons/MagnifyingGlass.png';
