@@ -153,6 +153,11 @@
               color: $azul-destaque;
               font-size: 9px;
               font-weight: 600;
+              cursor: pointer;
+
+              &:hover {
+                text-decoration: underline;
+              }
             }
           }
 
