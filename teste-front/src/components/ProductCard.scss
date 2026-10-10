@@ -1,0 +1,66 @@
+@use '../styles/variables' as *;
+
+.product-card {
+  display: flex;
+  flex: 0 0 calc((100% - 72px) / 4);
+  flex-direction: column;
+  padding: 12px 10px 16px;
+  border-radius: 8px;
+  background: $branco;
+  box-shadow: 0 2px 8px $sombra-card;
+
+  &-image {
+    align-self: center;
+    width: 130px;
+    height: 170px;
+    margin-top: 12px;
+    object-fit: contain;
+  }
+
+  &-name {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: $cinza-texto;
+  }
+
+  &-old-price {
+    margin-top: 16px;
+    font-size: 14px;
+    color: $cinza-claro;
+  }
+
+  &-price {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 700;
+    color: $cinza-texto;
+  }
+
+  &-installments {
+    margin-top: 4px;
+    font-size: 11px;
+    color: $cinza-texto;
+  }
+
+  &-shipping {
+    margin-top: 8px;
+    font-size: 11px;
+    color: $azul-destaque;
+  }
+
+  &-button {
+    margin-top: 12px;
+    padding: 12px 0;
+    border: none;
+    border-radius: 4px;
+    background: $azul-destaque;
+    color: $branco;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}
