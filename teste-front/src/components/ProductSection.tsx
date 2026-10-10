@@ -88,11 +88,12 @@ export function ProductSection() {
                             className="products-track"
                             style={{ transform: `translateX(calc(${indice} * -1 * (25% + 6px)))` }}
                         >
-                            {produtos.map((produto) => (
+                            {produtos.map((produto, posicao) => (
                                 <ProductCard
                                     key={produto.productName}
                                     produto={produto}
                                     onSelect={setProdutoSelecionado}
+                                    oculto={posicao < indice || posicao >= indice + VISIVEIS}
                                 />
                             ))}
                         </div>

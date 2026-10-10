@@ -7,7 +7,8 @@
     padding: 12px 10px 16px;
     border-radius: 8px;
     background: $branco;
-    box-shadow: 0 2px 8px $sombra-card;
+    box-shadow: 0 4px 16px $sombra-card;
+    transition: opacity 0.4s ease, visibility 0s;
 
     &-details {
       display: flex;
@@ -77,5 +78,11 @@
         font-weight: 700;
         text-transform: uppercase;
         cursor: pointer;
+    }
+
+     &.hidden {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.4s ease, visibility 0s 0.4s;
     }
 }

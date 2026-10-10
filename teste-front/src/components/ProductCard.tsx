@@ -12,14 +12,15 @@ export type Product = {
 type ProductCardProps = {
     produto: Product;
     onSelect: (produto: Product) => void;
+    oculto?: boolean;
 };
 
-export function ProductCard({ produto, onSelect }: ProductCardProps) {
+export function ProductCard({ produto, onSelect, oculto = false }: ProductCardProps) {
     const precoAntigo =
         produto.oldPrice ?? Math.round(produto.price * 1.1 * 100) / 100;
 
     return (
-          <article className="product-card">
+          <article className={`product-card ${oculto ? 'hidden' : ''}`}>
               <button
                   type="button"
                   className="product-card-details"
