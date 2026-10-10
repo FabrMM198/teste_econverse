@@ -15,6 +15,7 @@ export function ProductSection() {
     const [abaAtiva, setAbaAtiva] = useState('Celular');
     const [indice, setIndice] = useState(0);
     const [produtoSelecionado, setProdutoSelecionado] = useState<Product | null>(null);
+    const [quantidade, setQuantidade] = useState(1);
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     const ultimoIndice = Math.max(produtos.length - VISIVEIS, 0);
@@ -24,6 +25,11 @@ export function ProductSection() {
             dialogRef.current?.showModal();
         }
     }, [produtoSelecionado]);
+
+    function selecionarProduto(produto: Product) {
+        setQuantidade(1);
+        setProdutoSelecionado(produto);
+    }
 
     useEffect(() => {
         async function carregarProdutos() {
@@ -92,7 +98,7 @@ export function ProductSection() {
                                 <ProductCard
                                     key={produto.productName}
                                     produto={produto}
-                                    onSelect={setProdutoSelecionado}
+                                    onSelect={selecionarProduto}
                                     oculto={posicao < indice || posicao >= indice + VISIVEIS}
                                 />
                             ))}
@@ -141,8 +147,49 @@ export function ProductSection() {
                             <h2 id="product-modal-title">
                                 {produtoSelecionado.productName}
                             </h2>
-                            <p>{produtoSelecionado.descriptionShort}</p>
-                            <strong>{formatPrice(produtoSelecionado.price)}</strong>
+                            <strong className="product-modal-price">
+                                {formatPrice(produtoSelecionado.price)}
+                            </strong>
+                            <p className="product-modal-description">
+                                {produtoSelecionado.descriptionShort}
+                            </p>
+                            <span className="product-modal-more">
+                                Veja mais detalhes do produto ›
+                            </span>
+                            <div className="product-modal-actions">
+                                <div
+                                    className="product-modal-quantity"
+                                    role="group"
+                                    aria-label="Quantidade do produto"
+                                >
+                                    <button
+                                        type="button"
+                                        aria-label="Diminuir quantidade"
+                                        onClick={() =>
+                                            setQuantidade((atual) => Math.max(1, atual - 1))
+                                        }
+                                        disabled={quantidade === 1}
+                                    >
+                                        −
+                                    </button>
+                                    <span aria-live="polite">
+                                        {String(quantidade).padStart(2, '0')}
+                                    </span>
+                                    <button
+                                        type="button"
+                                        aria-label="Aumentar quantidade"
+                                        onClick={() => setQuantidade((atual) => atual + 1)}
+                                    >
+                                        +
+                                    </button>
+                                </div>
+                                <button
+                                    type="button"
+                                    className="product-modal-buy"
+                                >
+                                    Comprar
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </dialog>

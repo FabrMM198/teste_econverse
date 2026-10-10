@@ -26,7 +26,7 @@
     .product-modal {
         position: fixed;
         inset: 50% auto auto 50%;
-        width: min(90vw, 680px);
+        width: min(90vw, 604px);
         max-width: none;
         max-height: 90vh;
         padding: 0;
@@ -44,10 +44,11 @@
 
         &-content {
           display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
           align-items: center;
-          gap: 32px;
-          padding: 32px;
+          gap: 40px;
+          min-height: 234px;
+          padding: 32px 48px;
         }
 
         &-close {
@@ -64,26 +65,93 @@
 
         &-image {
           width: 100%;
-          max-height: 320px;
+            max-height: 150px;
           object-fit: contain;
         }
 
         &-info {
           display: flex;
           flex-direction: column;
-          gap: 16px;
+            align-items: flex-start;
+            gap: 8px;
 
-          h2 {
-            color: $violeta;
-            font-size: 22px;
+            h2 {
+              margin: 0;
+              color: $cinza-texto;
+              font-size: 16px;
+              font-weight: 500;
+              line-height: 1.4;
+              text-transform: uppercase;
+            }
+
+            .product-modal-price {
+              color: $cinza-texto;
+              font-size: 16px;
+              font-weight: 700;
+            }
+
+            .product-modal-description {
+              margin: 12px 0 0;
+              color: $cinza-claro;
+              font-size: 9px;
+              line-height: 1.5;
+            }
+
+            .product-modal-more {
+              color: $azul-destaque;
+              font-size: 9px;
+              font-weight: 600;
+            }
           }
 
-          strong {
-            color: $azul-destaque;
-            font-size: 24px;
+          &-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 14px;
+          }
+
+          &-quantity {
+            display: flex;
+            flex: 0 0 86px;
+            align-items: center;
+            justify-content: space-around;
+            height: 30px;
+            border: 1px solid #dedede;
+            border-radius: 4px;
+            color: $violeta;
+            font-size: 13px;
+
+            button {
+              padding: 0 7px;
+              border: 0;
+              background: transparent;
+              color: inherit;
+              font: inherit;
+              cursor: pointer;
+
+              &:disabled {
+                opacity: 0.45;
+                cursor: default;
+              }
+            }
+          }
+
+          &-buy {
+            flex: 1;
+            height: 30px;
+            border: 0;
+            border-radius: 6px;
+            background: $amarelo;
+            color: $violeta;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
           }
         }
-    }
 
     @media (max-width: 600px) {
         .product-modal {
@@ -95,6 +163,10 @@
 
           &-image {
             max-height: 220px;
+          }
+
+          &-actions {
+            margin-top: 8px;
           }
         }
     }
