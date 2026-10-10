@@ -45,6 +45,7 @@
     font-size: 14px;
     font-weight: 500;
     color: $cinza-texto;
+    white-space: nowrap;
   }
 
   &-item.is-active {

@@ -7,9 +7,11 @@ export default function App() {
   return (
     <>
       <Header />
-      <Hero />
-      <Categories />
-      <ProductSection />
+      <main>
+        <Hero />
+        <Categories />
+        <ProductSection />
+      </main>
     </>
   );
 }

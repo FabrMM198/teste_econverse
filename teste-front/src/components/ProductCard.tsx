@@ -35,7 +35,7 @@ export function ProductCard({ produto, onSelect }: ProductCardProps) {
                       loading="lazy"
                   />
 
-                  <h3 className="product-card-name">{produto.descriptionShort}</h3>
+                  <span className="product-card-name">{produto.descriptionShort}</span>
 
                   <s
                       className="product-card-old-price"

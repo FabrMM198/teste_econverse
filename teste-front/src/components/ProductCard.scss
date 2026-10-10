@@ -24,13 +24,15 @@
 
     &-image {
         align-self: center;
-        width: 130px;
-        height: 170px;
+        width: 100%;
+        max-width: 210px;
+        height: 240px;
         margin-top: 12px;
         object-fit: contain;
     }
 
     &-name {
+        display: block;
         margin-top: 20px;
         font-size: 14px;
         font-weight: 400;
