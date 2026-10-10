@@ -5,11 +5,23 @@
     margin: 72px auto 0;
     padding: 0 24px;
 
+    &-carousel-section {
+        margin-top: 40px;
+    }
+
+    &-heading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
+
     &-title {
         display: flex;
         align-items: center;
         gap: 24px;
         padding-inline: 54px;
+        margin: 0;
         font-size: 28px;
         font-weight: 700;
         color: $azul-destaque;
@@ -20,6 +32,46 @@
             height: 1px;
             background: $borda-header;
             content: '';
+        }
+    }
+
+    &-view-all {
+        color: $cinza-texto;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    &-tabs {
+        display: flex;
+        margin-top: 16px;
+        border: 1px solid $borda-header;
+        list-style: none;
+
+        li {
+            flex: 1;
+            border-right: 1px solid $borda-header;
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+
+        button {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            background: none;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: $cinza-texto;
+            cursor: pointer;
+
+            &.is-active {
+                font-weight: 700;
+                color: $azul-destaque;
+            }
         }
     }
 
@@ -171,40 +223,6 @@
         }
     }
 
-    &-tabs {
-        display: flex;
-        margin-top: 16px;
-        border: 1px solid $borda-header;
-        list-style: none;
-
-        li {
-            flex: 1;
-            border-right: 1px solid $borda-header;
-
-            &:last-child {
-                border-right: none;
-            }
-        }
-
-        button {
-            width: 100%;
-            padding: 10px 0;
-            border: none;
-            background: none;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 400;
-            text-transform: uppercase;
-            color: $cinza-texto;
-            cursor: pointer;
-
-            &.is-active {
-                font-weight: 700;
-                color: $azul-destaque;
-            }
-        }
-    }
-
     &-message {
         margin-top: 24px;
         text-align: center;
@@ -213,7 +231,7 @@
 
     &-carousel {
         position: relative;
-        margin-top: 0px;
+        margin-top: 8px;
     }
 
     &-viewport {
@@ -255,6 +273,14 @@
 
         &-next {
             right: -40px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        &-title {
+            gap: 12px;
+            padding-inline: 0;
+            font-size: 22px;
         }
     }
 }

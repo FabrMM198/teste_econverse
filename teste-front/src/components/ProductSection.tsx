@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import './ProductSection.scss';
 import { formatPrice } from '../utils/formatPrice';
 import { ProductCard, type Product } from './ProductCard';
@@ -7,6 +7,66 @@ const API_URL = '/api/products';
 
 const abas = ['Celular', 'Acessórios', 'Tablets', 'Notebooks', 'TVs', 'Ver todos'];
 const VISIVEIS = 4;
+
+type ProductCarouselProps = {
+    produtos: Product[];
+    onSelect: (produto: Product) => void;
+};
+
+function ProductCarousel({ produtos, onSelect }: ProductCarouselProps) {
+    const [indice, setIndice] = useState(0);
+    const tituloId = useId();
+    const ultimoIndice = Math.max(produtos.length - VISIVEIS, 0);
+
+    return (
+        <section className="products-carousel-section" aria-labelledby={tituloId}>
+            <div className="products-heading">
+                <h2 className="products-title" id={tituloId}>
+                    Produtos relacionados
+                </h2>
+                <span className="products-view-all">Ver todos</span>
+            </div>
+
+            <div className="products-carousel">
+                <button
+                    type="button"
+                    className="products-arrow products-arrow-prev"
+                    aria-label="Produtos anteriores"
+                    onClick={() => setIndice((i) => Math.max(i - 1, 0))}
+                    disabled={indice === 0}
+                >
+                    ‹
+                </button>
+
+                <div className="products-viewport">
+                    <div
+                        className="products-track"
+                        style={{ transform: `translateX(calc(${indice} * -1 * (25% + 6px)))` }}
+                    >
+                        {produtos.map((produto, posicao) => (
+                            <ProductCard
+                                key={produto.productName}
+                                produto={produto}
+                                onSelect={onSelect}
+                                oculto={posicao < indice || posicao >= indice + VISIVEIS}
+                            />
+                        ))}
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    className="products-arrow products-arrow-next"
+                    aria-label="Próximos produtos"
+                    onClick={() => setIndice((i) => Math.min(i + 1, ultimoIndice))}
+                    disabled={indice === ultimoIndice}
+                >
+                    ›
+                </button>
+            </div>
+        </section>
+    );
+}
 
 export function ProductSection() {
     const [produtos, setProdutos] = useState<Product[]>([]);
@@ -17,7 +77,7 @@ export function ProductSection() {
     const [produtoSelecionado, setProdutoSelecionado] = useState<Product | null>(null);
     const [quantidade, setQuantidade] = useState(1);
     const dialogRef = useRef<HTMLDialogElement>(null);
-
+    const tituloId = useId();
     const ultimoIndice = Math.max(produtos.length - VISIVEIS, 0);
 
     useEffect(() => {
@@ -51,8 +111,8 @@ export function ProductSection() {
     }, []);
 
     return (
-        <section className="products" aria-labelledby="products-title">
-            <h2 className="products-title" id="products-title">
+        <div className="products">
+            <h2 className="products-title" id={tituloId}>
                 Produtos relacionados
             </h2>
 
@@ -78,43 +138,54 @@ export function ProductSection() {
             )}
 
             {produtos.length > 0 && (
-                <div className="products-carousel">
-                    <button
-                        type="button"
-                        className="products-arrow products-arrow-prev"
-                        aria-label="Produtos anteriores"
-                        onClick={() => setIndice((i) => Math.max(i - 1, 0))}
-                        disabled={indice === 0}
-                    >
-                        ‹
-                    </button>
-
-                    <div className="products-viewport">
-                        <div
-                            className="products-track"
-                            style={{ transform: `translateX(calc(${indice} * -1 * (25% + 6px)))` }}
+                <>
+                    <div className="products-carousel">
+                        <button
+                            type="button"
+                            className="products-arrow products-arrow-prev"
+                            aria-label="Produtos anteriores"
+                            onClick={() => setIndice((i) => Math.max(i - 1, 0))}
+                            disabled={indice === 0}
                         >
-                            {produtos.map((produto, posicao) => (
-                                <ProductCard
-                                    key={produto.productName}
-                                    produto={produto}
-                                    onSelect={selecionarProduto}
-                                    oculto={posicao < indice || posicao >= indice + VISIVEIS}
-                                />
-                            ))}
-                        </div>
-                    </div>
+                            ‹
+                        </button>
 
-                    <button
-                        type="button"
-                        className="products-arrow products-arrow-next"
-                        aria-label="Próximos produtos"
-                        onClick={() => setIndice((i) => Math.min(i + 1, ultimoIndice))}
-                        disabled={indice === ultimoIndice}
-                    >
-                        ›
-                    </button>
-                </div>
+                        <div className="products-viewport">
+                            <div
+                                className="products-track"
+                                style={{
+                                    transform: `translateX(calc(${indice} * -1 * (25% + 6px)))`,
+                                }}
+                            >
+                                {produtos.map((produto, posicao) => (
+                                    <ProductCard
+                                        key={produto.productName}
+                                        produto={produto}
+                                        onSelect={selecionarProduto}
+                                        oculto={
+                                            posicao < indice ||
+                                            posicao >= indice + VISIVEIS
+                                        }
+                                    />
+                                ))}
+                            </div>
+                        </div>
+
+                        <button
+                            type="button"
+                            className="products-arrow products-arrow-next"
+                            aria-label="Próximos produtos"
+                            onClick={() =>
+                                setIndice((i) => Math.min(i + 1, ultimoIndice))
+                            }
+                            disabled={indice === ultimoIndice}
+                        >
+                            ›
+                        </button>
+                    </div>
+                    <ProductCarousel produtos={produtos} onSelect={selecionarProduto} />
+                    <ProductCarousel produtos={produtos} onSelect={selecionarProduto} />
+                </>
             )}
 
             {produtoSelecionado && (
@@ -194,6 +265,6 @@ export function ProductSection() {
                     </div>
                 </dialog>
             )}
-        </section>
+        </div>
     );
 }
