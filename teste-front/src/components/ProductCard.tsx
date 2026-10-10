@@ -1,52 +1,62 @@
 import './ProductCard.scss';
+import { formatPrice } from '../utils/formatPrice';
 
 export type Product = {
-  productName: string;
-  descriptionShort: string;
-  photo: string;
-  price: number;
-  oldPrice?: number;
+    productName: string;
+    descriptionShort: string;
+    photo: string;
+    price: number;
+    oldPrice?: number;
 };
-
-function formatPrice(value: number): string {
-  return value.toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  });
-}
 
 type ProductCardProps = {
-  produto: Product;
+    produto: Product;
+    onSelect: (produto: Product) => void;
 };
 
-export function ProductCard({ produto }: ProductCardProps) {
-  return (
-    <article className="product-card">
-      <img
-        className="product-card-image"
-        src={produto.photo}
-        alt={produto.productName}
-        width={130}
-        height={170}
-        loading="lazy"
-      />
+export function ProductCard({ produto, onSelect }: ProductCardProps) {
+    const precoAntigo =
+        produto.oldPrice ?? Math.round(produto.price * 1.1 * 100) / 100;
 
-      <h3 className="product-card-name">{produto.descriptionShort}</h3>
+    return (
+          <article className="product-card">
+              <button
+                  type="button"
+                  className="product-card-details"
+                  onClick={() => onSelect(produto)}
+                  aria-label={`Ver detalhes de ${produto.productName}`}
+              >
+                  <img
+                      className="product-card-image"
+                      src={produto.photo}
+                      alt=""
+                      width={130}
+                      height={170}
+                      loading="lazy"
+                  />
 
-      {produto.oldPrice !== undefined && (
-        <s className="product-card-old-price">
-          {formatPrice(produto.oldPrice)}
-        </s>
-      )}
-      <strong className="product-card-price">{formatPrice(produto.price)}</strong>
-      <span className="product-card-installments">
-        ou 2x de {formatPrice(produto.price / 2)} sem juros
-      </span>
-      <span className="product-card-shipping">Frete grátis</span>
+                  <h3 className="product-card-name">{produto.descriptionShort}</h3>
 
-      <button type="button" className="product-card-button">
-        Comprar
-      </button>
-    </article>
-  );
+                  <s
+                      className="product-card-old-price"
+                      title="Preço demonstrativo, calculado 10% acima do preço atual"
+                  >
+                      {formatPrice(precoAntigo)}
+                  </s>
+                  <strong className="product-card-price">{formatPrice(produto.price)}</strong>
+                  <span className="product-card-installments">
+                      ou 2x de {formatPrice(produto.price / 2)} sem juros
+                  </span>
+                  <span className="product-card-shipping">Frete grátis</span>
+              </button>
+
+              <button
+                  type="button"
+                  className="product-card-button"
+                  onClick={() => onSelect(produto)}
+              >
+                  Comprar
+              </button>
+          </article>
+    );
 }
