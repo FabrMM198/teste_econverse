@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import './ProductSection.scss';
 import { formatPrice } from '../utils/formatPrice';
 import { ProductCard, type Product } from './ProductCard';
@@ -11,6 +11,11 @@ const VISIVEIS = 4;
 type ProductCarouselProps = {
     produtos: Product[];
     onSelect: (produto: Product) => void;
+};
+
+type ProductSectionProps = {
+    afterPrimaryCarousel?: ReactNode;
+    betweenRelatedCarousels?: ReactNode;
 };
 
 function ProductCarousel({ produtos, onSelect }: ProductCarouselProps) {
@@ -68,7 +73,10 @@ function ProductCarousel({ produtos, onSelect }: ProductCarouselProps) {
     );
 }
 
-export function ProductSection() {
+export function ProductSection({
+    afterPrimaryCarousel,
+    betweenRelatedCarousels,
+}: ProductSectionProps) {
     const [produtos, setProdutos] = useState<Product[]>([]);
     const [carregando, setCarregando] = useState(true);
     const [erro, setErro] = useState(false);
@@ -111,34 +119,34 @@ export function ProductSection() {
     }, []);
 
     return (
-        <div className="products">
-            <h2 className="products-title" id={tituloId}>
-                Produtos relacionados
-            </h2>
+        <>
+            <section className="products">
+                <h2 className="products-title" id={tituloId}>
+                    Produtos relacionados
+                </h2>
 
-            <ul className="products-tabs">
-                {abas.map((aba) => (
-                    <li key={aba}>
-                        <button
-                            type="button"
-                            className={abaAtiva === aba ? 'is-active' : ''}
-                            onClick={() => setAbaAtiva(aba)}
-                        >
-                            {aba}
-                        </button>
-                    </li>
-                ))}
-            </ul>
+                <ul className="products-tabs">
+                    {abas.map((aba) => (
+                        <li key={aba}>
+                            <button
+                                type="button"
+                                className={abaAtiva === aba ? 'is-active' : ''}
+                                onClick={() => setAbaAtiva(aba)}
+                            >
+                                {aba}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
 
-            {carregando && <p className="products-message">Carregando produtos...</p>}
-            {erro && (
-                <p className="products-message">
-                    Não foi possível carregar os produtos. Tente novamente mais tarde.
-                </p>
-            )}
+                {carregando && <p className="products-message">Carregando produtos...</p>}
+                {erro && (
+                    <p className="products-message">
+                        Não foi possível carregar os produtos. Tente novamente mais tarde.
+                    </p>
+                )}
 
-            {produtos.length > 0 && (
-                <>
+                {produtos.length > 0 && (
                     <div className="products-carousel">
                         <button
                             type="button"
@@ -183,88 +191,108 @@ export function ProductSection() {
                             ›
                         </button>
                     </div>
-                    <ProductCarousel produtos={produtos} onSelect={selecionarProduto} />
-                    <ProductCarousel produtos={produtos} onSelect={selecionarProduto} />
-                </>
-            )}
+                )}
 
-            {produtoSelecionado && (
-                <dialog
-                    ref={dialogRef}
-                    className="product-modal"
-                    aria-labelledby="product-modal-title"
-                    onClose={() => setProdutoSelecionado(null)}
-                    onClick={(event) => {
-                        if (event.target === dialogRef.current) {
-                            dialogRef.current.close();
-                        }
-                    }}
-                >
-                    <div className="product-modal-content">
-                        <button
-                            type="button"
-                            className="product-modal-close"
-                            aria-label="Fechar detalhes do produto"
-                            onClick={() => dialogRef.current?.close()}
-                        >
-                            &times;
-                        </button>
-                        <img
-                            className="product-modal-image"
-                            src={produtoSelecionado.photo}
-                            alt={produtoSelecionado.productName}
-                        />
-                        <div className="product-modal-info">
-                            <h2 id="product-modal-title">
-                                {produtoSelecionado.productName}
-                            </h2>
-                            <strong className="product-modal-price">
-                                {formatPrice(produtoSelecionado.price)}
-                            </strong>
-                            <p className="product-modal-description">
-                                {produtoSelecionado.descriptionShort}
-                            </p>
-                            <span className="product-modal-more">
-                                Veja mais detalhes do produto ›
-                            </span>
-                            <div className="product-modal-actions">
-                                <div
-                                    className="product-modal-quantity"
-                                    role="group"
-                                    aria-label="Quantidade do produto"
-                                >
+                {produtoSelecionado && (
+                    <dialog
+                        ref={dialogRef}
+                        className="product-modal"
+                        aria-labelledby="product-modal-title"
+                        onClose={() => setProdutoSelecionado(null)}
+                        onClick={(event) => {
+                            if (event.target === dialogRef.current) {
+                                dialogRef.current.close();
+                            }
+                        }}
+                    >
+                        <div className="product-modal-content">
+                            <button
+                                type="button"
+                                className="product-modal-close"
+                                aria-label="Fechar detalhes do produto"
+                                onClick={() => dialogRef.current?.close()}
+                            >
+                                &times;
+                            </button>
+                            <img
+                                className="product-modal-image"
+                                src={produtoSelecionado.photo}
+                                alt={produtoSelecionado.productName}
+                            />
+                            <div className="product-modal-info">
+                                <h2 id="product-modal-title">
+                                    {produtoSelecionado.productName}
+                                </h2>
+                                <strong className="product-modal-price">
+                                    {formatPrice(produtoSelecionado.price)}
+                                </strong>
+                                <p className="product-modal-description">
+                                    {produtoSelecionado.descriptionShort}
+                                </p>
+                                <span className="product-modal-more">
+                                    Veja mais detalhes do produto ›
+                                </span>
+                                <div className="product-modal-actions">
+                                    <div
+                                        className="product-modal-quantity"
+                                        role="group"
+                                        aria-label="Quantidade do produto"
+                                    >
+                                        <button
+                                            type="button"
+                                            aria-label="Diminuir quantidade"
+                                            onClick={() =>
+                                                setQuantidade((atual) =>
+                                                    Math.max(1, atual - 1),
+                                                )
+                                            }
+                                            disabled={quantidade === 1}
+                                        >
+                                            −
+                                        </button>
+                                        <span aria-live="polite">
+                                            {String(quantidade).padStart(2, '0')}
+                                        </span>
+                                        <button
+                                            type="button"
+                                            aria-label="Aumentar quantidade"
+                                            onClick={() =>
+                                                setQuantidade((atual) => atual + 1)
+                                            }
+                                        >
+                                            +
+                                        </button>
+                                    </div>
                                     <button
                                         type="button"
-                                        aria-label="Diminuir quantidade"
-                                        onClick={() =>
-                                            setQuantidade((atual) => Math.max(1, atual - 1))
-                                        }
-                                        disabled={quantidade === 1}
+                                        className="product-modal-buy"
                                     >
-                                        −
-                                    </button>
-                                    <span aria-live="polite">
-                                        {String(quantidade).padStart(2, '0')}
-                                    </span>
-                                    <button
-                                        type="button"
-                                        aria-label="Aumentar quantidade"
-                                        onClick={() => setQuantidade((atual) => atual + 1)}
-                                    >
-                                        +
+                                        Comprar
                                     </button>
                                 </div>
-                                <button
-                                    type="button"
-                                    className="product-modal-buy"
-                                >
-                                    Comprar
-                                </button>
                             </div>
                         </div>
-                    </div>
-                </dialog>
+                    </dialog>
+                )}
+            </section>
+
+            {afterPrimaryCarousel}
+
+            {produtos.length > 0 && (
+                <ProductCarousel
+                    produtos={produtos}
+                    onSelect={selecionarProduto}
+                />
             )}
-        </div>
+
+            {betweenRelatedCarousels}
+
+            {produtos.length > 0 && (
+                <ProductCarousel
+                    produtos={produtos}
+                    onSelect={selecionarProduto}
+                />
+            )}
+        </>
     );
 }

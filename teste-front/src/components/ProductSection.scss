@@ -6,7 +6,9 @@
     padding: 0 24px;
 
     &-carousel-section {
-        margin-top: 40px;
+        max-width: $largura-max;
+        margin: 40px auto 0;
+        padding: 0 24px;
     }
 
     &-heading {

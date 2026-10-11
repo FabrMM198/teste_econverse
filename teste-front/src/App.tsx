@@ -11,8 +11,10 @@ export default function App() {
       <main>
         <Hero />
         <Categories />
-        <ProductSection />
-        <Partners />
+        <ProductSection
+          afterPrimaryCarousel={<Partners />}
+          betweenRelatedCarousels={<Partners />}
+        />
       </main>
     </>
   );
