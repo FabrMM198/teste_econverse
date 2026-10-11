@@ -2,6 +2,7 @@ import { Hero } from './components/Hero';
 import { Header } from './components/Header';
 import { Categories } from './components/Categories';
 import { ProductSection } from './components/ProductSection';
+import { Partners } from './components/Partners';
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         <Hero />
         <Categories />
         <ProductSection />
+        <Partners />
       </main>
     </>
   );
