@@ -46,7 +46,7 @@ export function Header() {
             <div className="header-benefits">
                 {beneficios.map((b) => (
             <div className="benefit" key={b.destaque}>
-                <img src={b.icone} alt="" />
+                <img src={b.icone} alt="" title={b.destaque} />
                 <span>
                     {b.antes} <strong>{b.destaque}</strong> {b.depois}
                 </span>
@@ -77,14 +77,15 @@ export function Header() {
                                 className={menuAtivo === item.nome ? 'is-active' : ''}
                                 onClick={() => setMenuAtivo(item.nome)}
                                 aria-pressed={menuAtivo === item.nome}
+                                title={item.nome}
                             >
                                 {item.nome}
                             </button>
                         </li>
                     ))}
                 </ul>
-                <a href="#" className="header-subscription">
-                    <img src={crown} alt="Crown" />
+                <a href="#" className="header-subscription" title="Assinatura">
+                    <img src={crown} alt="" />
                     Assinatura
                 </a>
             </nav>

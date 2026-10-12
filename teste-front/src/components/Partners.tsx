@@ -20,12 +20,12 @@ export function Partners() {
         <section className="partners" aria-label="Parceiros">
             {banners.map((banner) => (
                 <article className="partners-banner" key={banner.id}>
-                    <img className="partners-image" src={banner.imagem} alt="" />
+                    <img className="partners-image" src={banner.imagem} alt="" title={banner.titulo} />
 
                     <div className="partners-content">
                         <h2 className="partners-title">{banner.titulo}</h2>
                         <p className="partners-text">{banner.texto}</p>
-                        <a className="partners-button" href="#">
+                        <a className="partners-button" href="#" title={banner.botao}>
                             {banner.botao}
                         </a>
                     </div>

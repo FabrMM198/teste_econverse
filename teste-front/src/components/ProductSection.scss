@@ -79,6 +79,11 @@
                 font-weight: 700;
                 color: $azul-destaque;
             }
+
+            &:hover,
+            &:focus-visible {
+                color: $azul-destaque;
+            }
         }
     }
 

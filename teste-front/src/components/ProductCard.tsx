@@ -26,11 +26,13 @@ export function ProductCard({ produto, onSelect, oculto = false }: ProductCardPr
                   className="product-card-details"
                   onClick={() => onSelect(produto)}
                   aria-label={`Ver detalhes de ${produto.productName}`}
+                  title={`Ver detalhes de ${produto.productName}`}
               >
                   <img
                       className="product-card-image"
                       src={produto.photo}
                       alt=""
+                      title={produto.productName}
                       width={130}
                       height={170}
                       loading="lazy"
@@ -55,6 +57,7 @@ export function ProductCard({ produto, onSelect, oculto = false }: ProductCardPr
                   type="button"
                   className="product-card-button"
                   onClick={() => onSelect(produto)}
+                  title={`Comprar ${produto.productName}`}
               >
                   Comprar
               </button>

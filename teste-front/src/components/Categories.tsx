@@ -47,6 +47,7 @@ export function Categories() {
                                 }
                                 src={categoria.icone}
                                 alt=""
+                                title={categoria.nome}
                             />
                         </span>
                         <span className="categories-name">{categoria.nome}</span>

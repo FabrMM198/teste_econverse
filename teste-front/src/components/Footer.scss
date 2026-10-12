@@ -35,6 +35,13 @@
     img {
       display: block;
       width: 20px;
+      transition: filter 0.2s;
+    }
+
+    a:hover img,
+    a:focus-visible img {
+      filter: brightness(0) saturate(100%) invert(13%) sepia(78%) saturate(4058%)
+        hue-rotate(250deg) brightness(75%) contrast(107%);
     }
   }
 

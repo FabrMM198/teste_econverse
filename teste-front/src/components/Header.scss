@@ -59,6 +59,11 @@
     height: 34px;
   }
 
+  &-main > a {
+    display: flex;
+    flex: 0 0 auto;
+  }
+
   &-search {
     flex: 0 1 50%;
     position: relative;
@@ -75,17 +80,16 @@
       font-weight: 500;
     }
 
-    button {
+    &-button {
+      display: flex;
       position: absolute;
       right: 16px;
       top: 50%;
       transform: translateY(-50%);
-      background: none;
-      border: none;
-      cursor: pointer;
+      align-items: center;
     }
 
-    button img {
+    &-button img {
       width: 22px;
       display: block;
     }
@@ -93,11 +97,22 @@
 
   &-icons {
     display: flex;
+    align-items: center;
     gap: 24px;
+
+    a {
+      display: flex;
+    }
 
     img {
       width: 22px;
-      cursor: pointer;
+      transition: filter 0.2s;
+
+      a:hover &,
+      a:focus-visible & {
+        filter: brightness(0) saturate(100%) invert(13%) sepia(78%)
+          saturate(4058%) hue-rotate(250deg) brightness(75%) contrast(107%);
+      }
     }
   }
 

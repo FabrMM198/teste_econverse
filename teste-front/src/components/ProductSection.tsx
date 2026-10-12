@@ -37,6 +37,7 @@ function ProductCarousel({ produtos, onSelect }: ProductCarouselProps) {
                     type="button"
                     className="products-arrow products-arrow-prev"
                     aria-label="Produtos anteriores"
+                    title="Produtos anteriores"
                     onClick={() => setIndice((i) => Math.max(i - 1, 0))}
                     disabled={indice === 0}
                 >
@@ -63,6 +64,7 @@ function ProductCarousel({ produtos, onSelect }: ProductCarouselProps) {
                     type="button"
                     className="products-arrow products-arrow-next"
                     aria-label="Próximos produtos"
+                    title="Próximos produtos"
                     onClick={() => setIndice((i) => Math.min(i + 1, ultimoIndice))}
                     disabled={indice === ultimoIndice}
                 >
@@ -132,6 +134,7 @@ export function ProductSection({
                                 type="button"
                                 className={abaAtiva === aba ? 'is-active' : ''}
                                 onClick={() => setAbaAtiva(aba)}
+                                title={aba}
                             >
                                 {aba}
                             </button>
@@ -152,6 +155,7 @@ export function ProductSection({
                             type="button"
                             className="products-arrow products-arrow-prev"
                             aria-label="Produtos anteriores"
+                            title="Produtos anteriores"
                             onClick={() => setIndice((i) => Math.max(i - 1, 0))}
                             disabled={indice === 0}
                         >
@@ -183,6 +187,7 @@ export function ProductSection({
                             type="button"
                             className="products-arrow products-arrow-next"
                             aria-label="Próximos produtos"
+                            title="Próximos produtos"
                             onClick={() =>
                                 setIndice((i) => Math.min(i + 1, ultimoIndice))
                             }
@@ -210,6 +215,7 @@ export function ProductSection({
                                 type="button"
                                 className="product-modal-close"
                                 aria-label="Fechar detalhes do produto"
+                                title="Fechar detalhes do produto"
                                 onClick={() => dialogRef.current?.close()}
                             >
                                 &times;
@@ -218,6 +224,7 @@ export function ProductSection({
                                 className="product-modal-image"
                                 src={produtoSelecionado.photo}
                                 alt={produtoSelecionado.productName}
+                                title={produtoSelecionado.productName}
                             />
                             <div className="product-modal-info">
                                 <h2 id="product-modal-title">
@@ -241,6 +248,7 @@ export function ProductSection({
                                         <button
                                             type="button"
                                             aria-label="Diminuir quantidade"
+                                            title="Diminuir quantidade"
                                             onClick={() =>
                                                 setQuantidade((atual) =>
                                                     Math.max(1, atual - 1),
@@ -256,6 +264,7 @@ export function ProductSection({
                                         <button
                                             type="button"
                                             aria-label="Aumentar quantidade"
+                                            title="Aumentar quantidade"
                                             onClick={() =>
                                                 setQuantidade((atual) => atual + 1)
                                             }
@@ -266,6 +275,7 @@ export function ProductSection({
                                     <button
                                         type="button"
                                         className="product-modal-buy"
+                                        title="Comprar produto"
                                     >
                                         Comprar
                                     </button>

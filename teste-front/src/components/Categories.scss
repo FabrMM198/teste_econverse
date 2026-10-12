@@ -77,7 +77,23 @@
     }
   }
 
-  &-item:hover .categories-icon {
-    background: $branco;
+  &-item:hover,
+  &-item:focus-visible {
+    .categories-icon {
+      background: $branco;
+    }
+
+    .categories-icon img {
+      filter: brightness(0) saturate(100%) invert(13%) sepia(78%) saturate(4058%)
+        hue-rotate(250deg) brightness(75%) contrast(107%);
+    }
+
+    .categories-icon img.categories-icon-technology {
+      filter: none;
+    }
+
+    .categories-name {
+      color: $azul-destaque;
+    }
   }
 }

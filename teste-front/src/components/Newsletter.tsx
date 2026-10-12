@@ -38,7 +38,7 @@ export function Newsletter() {
             aria-label="Seu e-mail"
             required
           />
-          <button type="submit">Inscrever</button>
+          <button type="submit" title="Inscrever-se na newsletter">Inscrever</button>
 
           <label className="newsletter-terms">
             <input type="checkbox" name="termos" required />

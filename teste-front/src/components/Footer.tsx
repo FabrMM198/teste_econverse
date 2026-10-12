@@ -33,7 +33,7 @@ export function Footer() {
     <footer className="footer">
       <div className="footer-main">
         <div className="footer-brand">
-          <img className="footer-logo" src={logo} alt="Econverse" loading="lazy" />
+          <img className="footer-logo" src={logo} alt="Econverse" title="Econverse" loading="lazy" />
           <p className="footer-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
@@ -41,8 +41,8 @@ export function Footer() {
           <ul className="footer-social">
             {redes.map((rede) => (
               <li key={rede.nome}>
-                <a href={rede.url} aria-label={rede.nome}>
-                  <img src={rede.icone} alt="" />
+                <a href={rede.url} aria-label={rede.nome} title= {rede.nome}>
+                  <img src={rede.icone} alt="" title={rede.nome} />
                 </a>
               </li>
             ))}
@@ -56,7 +56,7 @@ export function Footer() {
               <ul className="footer-links">
                 {coluna.links.map((link) => (
                   <li key={link}>
-                    <a href="#">{link}</a>
+                    <a href="#" title={link}>{link}</a>
                   </li>
                 ))}
               </ul>
