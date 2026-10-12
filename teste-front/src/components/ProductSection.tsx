@@ -29,7 +29,9 @@ function ProductCarousel({ produtos, onSelect }: ProductCarouselProps) {
                 <h2 className="products-title" id={tituloId}>
                     Produtos relacionados
                 </h2>
-                <span className="products-view-all">Ver todos</span>
+                <a className="products-view-all" href="#" title="Ver todos os produtos">
+                    Ver todos
+                </a>
             </div>
 
             <div className="products-carousel">

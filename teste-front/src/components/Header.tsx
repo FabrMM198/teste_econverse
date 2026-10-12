@@ -54,18 +54,20 @@ export function Header() {
             ))}
             </div>
             <div className="header-main">
-                <img src={logo} alt="Logo da Econverse" className="header-logo" />
+                <a href="#" aria-label="Página inicial" title="Página inicial">
+                    <img src={logo} alt="Logo da Econverse" className="header-logo" />
+                </a>
                 <div className="header-search">
                     <input type="text" placeholder="O que você está buscando?" />
-                    <button>
-                        <img src={search} alt="Busca" />
-                    </button>
+                    <a className="header-search-button" href="#" title="Buscar" aria-label="Buscar">
+                        <img src={search} alt="" />
+                    </a>
                 </div>
                 <div className="header-icons">
-                    <img src={orders} alt="Pedidos" />
-                    <img src={heart} alt="Favoritos" />
-                    <img src={user} alt="Usuário" />
-                    <img src={cart} alt="Carrinho" />
+                    <a href="#" aria-label="Pedidos" title="Pedidos"><img src={orders} alt="" /></a>
+                    <a href="#" aria-label="Favoritos" title="Favoritos"><img src={heart} alt="" /></a>
+                    <a href="#" aria-label="Usuário" title="Usuário"><img src={user} alt="" /></a>
+                    <a href="#" aria-label="Carrinho" title="Carrinho"><img src={cart} alt="" /></a>
                 </div>
             </div>
             <nav className="header-menu">

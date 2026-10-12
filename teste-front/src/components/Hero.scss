@@ -33,7 +33,8 @@
       color: $amarelo;
     }
 
-    button {
+    a {
+      display: inline-block;
       background: $amarelo;
       color: $violeta;
       border: none;
@@ -41,7 +42,7 @@
       font-size: 16px;
       font-weight: 600;
       font-family: inherit;
-      cursor: pointer;
+      text-decoration: none;
     }
   }
 }
