@@ -4,13 +4,12 @@ import { Categories } from './components/Categories';
 import { ProductSection } from './components/ProductSection';
 import { Partners } from './components/Partners';
 import { Newsletter } from './components/Newsletter';
+import { Footer } from './components/Footer';
 
 export default function App() {
   return (
     <>
-      <header>
-        <Header />
-      </header>
+      <Header />
       <main>
         <Hero />
         <Categories />
@@ -19,9 +18,8 @@ export default function App() {
           betweenRelatedCarousels={<Partners />}
         />
       </main>
-      <footer>
-        <Newsletter />
-      </footer>
+      <Newsletter />
+      <Footer />
     </>
   );
 }
