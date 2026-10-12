@@ -43,6 +43,20 @@
       font-weight: 600;
       font-family: inherit;
       text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+
+      &:hover,
+      &:focus-visible {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(30, 55, 90, 0.18);
+        filter: brightness(0.96);
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 3px rgba(30, 55, 90, 0.16);
+        filter: brightness(0.92);
+      }
     }
   }
 }
