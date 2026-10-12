@@ -8,7 +8,9 @@
   &-list {
     display: flex;
     justify-content: center;
-    gap: 28px;
+    gap: clamp(12px, 2vw, 28px);
+    margin: 0;
+    padding: 0;
     list-style: none;
   }
 
@@ -34,11 +36,18 @@
     background: $fundo-card;
     box-shadow: 0 2px 6px $sombra-card;
     transition: background 0.2s;
+  }
 
-    img {
-      width: 40px;
-      height: 40px;
-    }
+  &-icon img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) saturate(100%) invert(31%);
+    transition: filter 0.2s;
+  }
+
+  &-icon img.categories-icon-technology {
+    mix-blend-mode: multiply;
+    filter: grayscale(1);
   }
 
   &-name {
@@ -51,6 +60,15 @@
   &-item.is-active {
     .categories-icon {
       background: $branco;
+    }
+
+    .categories-icon img {
+      filter: brightness(0) saturate(100%) invert(13%) sepia(78%) saturate(4058%)
+        hue-rotate(250deg) brightness(75%) contrast(107%);
+    }
+
+    .categories-icon img.categories-icon-technology {
+      filter: none;
     }
 
     .categories-name {

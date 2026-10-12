@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './Header.scss';
 
 import logo from '../assets/img/Logo_Econverse.png';
@@ -26,7 +27,6 @@ const beneficios: Beneficio[] = [
 
 type LinkMenu = {
   nome: string;
-  destaque?: boolean;
 };
 
 const menu: LinkMenu[] = [
@@ -35,10 +35,12 @@ const menu: LinkMenu[] = [
   { nome: 'Livros' },
   { nome: 'Moda' },
   { nome: 'Lançamentos' },
-  { nome: 'Ofertas do dia', destaque: true },
+  { nome: 'Ofertas do dia' },
 ];
 
 export function Header() {
+    const [menuAtivo, setMenuAtivo] = useState('Ofertas do dia');
+
     return (
         <header className="header">
             <div className="header-benefits">
@@ -69,8 +71,15 @@ export function Header() {
             <nav className="header-menu">
                 <ul>
                     {menu.map((item) => (
-                        <li key={item.nome} className={item.destaque ? 'destaque' : ''}>
-                            {item.nome}
+                        <li key={item.nome}>
+                            <button
+                                type="button"
+                                className={menuAtivo === item.nome ? 'is-active' : ''}
+                                onClick={() => setMenuAtivo(item.nome)}
+                                aria-pressed={menuAtivo === item.nome}
+                            >
+                                {item.nome}
+                            </button>
                         </li>
                     ))}
                 </ul>

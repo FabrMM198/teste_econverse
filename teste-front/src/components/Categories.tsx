@@ -39,7 +39,15 @@ export function Categories() {
                         aria-pressed={ativa === categoria.nome}
                     >
                         <span className="categories-icon">
-                            <img src={categoria.icone} alt="" />
+                            <img
+                                className={
+                                    categoria.nome === 'Tecnologia'
+                                        ? 'categories-icon-technology'
+                                        : undefined
+                                }
+                                src={categoria.icone}
+                                alt=""
+                            />
                         </span>
                         <span className="categories-name">{categoria.nome}</span>
                     </button>

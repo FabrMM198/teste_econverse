@@ -121,14 +121,25 @@
 
     li {
       font-size: 12px;
+    }
+
+    li button {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      font: inherit;
       font-weight: 600;
       text-transform: uppercase;
       color: $cinza-claro;
       cursor: pointer;
+      transition: color 0.2s;
 
-      &.destaque {
+      &.is-active {
         color: $azul-destaque;
-        font-weight: 600;
+      }
+
+      &:hover {
+        color: $azul-destaque;
       }
     }
   }
